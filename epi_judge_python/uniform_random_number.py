@@ -13,6 +13,18 @@ def zero_one_random():
 
 def uniform_random(lower_bound: int, upper_bound: int) -> int:
     # TODO - you fill in here.
+    possible_outcomes = upper_bound - lower_bound + 1
+    #result = 0
+    while True:
+        result, i = 0, 0
+        while (1<<i) < possible_outcomes:
+            result = (result<<1) | zero_one_random()
+            i += 1
+        #print(result, lower_bound, upper_bound)
+        if result < possible_outcomes:
+            break
+    return result +lower_bound
+
     return 0
 
 
