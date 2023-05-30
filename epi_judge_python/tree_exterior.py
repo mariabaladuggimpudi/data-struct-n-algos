@@ -9,7 +9,45 @@ from test_framework.test_utils import enable_executor_hook
 
 def exterior_binary_tree(tree: BinaryTreeNode) -> List[BinaryTreeNode]:
     # TODO - you fill in here.
-    return []
+    def leftside_tree(subtree):
+        if not subtree or (not subtree.left and not subtree.right):
+            return
+        exterior.append(subtree)
+        if subtree.left:
+            leftside_tree(subtree.left)
+        else:
+            leftside_tree(subtree.right)
+
+    def leaves(subtree):
+        if not subtree:
+            return
+        if not subtree.left and not subtree.right:
+            exterior.append(subtree)
+            return
+        leaves(subtree.left)
+        leaves(subtree.right)
+
+
+    def rightside_tree(subtree):
+        if not subtree or (not subtree.left and not subtree.right):
+            return
+        if subtree.right:
+            rightside_tree(subtree.right)
+        else:
+            rightside_tree(subtree.left)
+
+        exterior.append(subtree)
+
+
+    if not tree:
+        return []
+
+    exterior = [tree]
+    leftside_tree(tree.left)
+    leaves(tree.left)
+    leaves(tree.right)
+    rightside_tree(tree.right)
+    return exterior
 
 
 def create_output_list(L):
