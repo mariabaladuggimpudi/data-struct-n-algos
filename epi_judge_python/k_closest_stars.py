@@ -1,4 +1,8 @@
 import functools
+import heapq
+
+import itertools
+
 import math
 from typing import Iterator, List
 
@@ -29,7 +33,15 @@ class Star:
 
 def find_closest_k_stars(stars: Iterator[Star], k: int) -> List[Star]:
     # TODO - you fill in here.
-    return []
+    min_heap = list(itertools.islice(stars, k))
+    for ind, val in enumerate(min_heap):
+        min_heap[ind] = (val.distance * -1, val)
+
+    heapq.heapify(min_heap)
+    for star in stars:
+        heapq.heappushpop(min_heap, (-star.distance, star))
+
+    return [s[1] for s in min_heap]
 
 
 def comp(expected_output, output):
