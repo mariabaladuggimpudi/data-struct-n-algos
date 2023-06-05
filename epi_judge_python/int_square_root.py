@@ -5,7 +5,6 @@ def square_root(k: int) -> int:
     # TODO - you fill in here.
 
     start, end = 1, k
-    #mid = (start + end) // 2
     while start <= end:
         mid = (start + end) // 2
         midsquared = mid * mid
