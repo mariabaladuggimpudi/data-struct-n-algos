@@ -1,9 +1,18 @@
+import collections
+
 from test_framework import generic_test
 
 
 def can_form_palindrome(s: str) -> bool:
     # TODO - you fill in here.
-    return True
+    s_dict = collections.Counter(s)
+    count = 1
+    for key, val in s_dict.items():
+        if count > 2:
+            return False
+        if val % 2:
+            count += 1
+    return True if count <= 2 else False
 
 
 if __name__ == '__main__':
