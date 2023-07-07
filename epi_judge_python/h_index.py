@@ -6,15 +6,13 @@ from test_framework import generic_test
 def h_index(citations: List[int]) -> int:
     # TODO - you fill in here.
     citations.sort()
-    for i in range(len(citations)):
-        if citations[i] != 0:
-           if citations[i] < len(citations[i:]):
-               pass
-           elif citations[i] >= len(citations[i:]):
-               return len(citations) - i
-
     #print(citations)
+    for i in range(len(citations)):
+        if citations[i] >= len(citations) - i:
+            return len(citations) - i
+
     return 0
+
 
 
 if __name__ == '__main__':
