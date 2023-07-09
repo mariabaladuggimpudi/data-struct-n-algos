@@ -17,6 +17,12 @@ class Team:
     @staticmethod
     def valid_placement_exists(team0: 'Team', team1: 'Team') -> bool:
         # TODO - you fill in here.
+
+        team0._players.sort()
+        team1._players.sort()
+        for a, b in zip(team0._players, team1._players):
+            if a >= b:
+                return False
         return True
 
 
