@@ -1,3 +1,4 @@
+from numbers import Number
 from typing import List
 
 from test_framework import generic_test
@@ -5,6 +6,7 @@ from test_framework import generic_test
 
 def generate_first_k_a_b_sqrt2(k: int) -> List[float]:
     # TODO - you fill in here.
+    curr_num = Number()
     return []
 
 
