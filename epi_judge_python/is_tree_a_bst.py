@@ -4,7 +4,6 @@ from test_framework import generic_test
 
 def is_binary_tree_bst(tree: BinaryTreeNode) -> bool:
     # TODO - you fill in here.
-
     def are_keys_in_range(tree, low_range=float('-inf'), high_range=float('inf')):
 
         if not tree:
