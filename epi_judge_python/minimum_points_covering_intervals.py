@@ -1,5 +1,6 @@
 import collections
 import functools
+import operator
 from typing import List
 
 from test_framework import generic_test
@@ -10,7 +11,13 @@ Interval = collections.namedtuple('Interval', ('left', 'right'))
 
 def find_minimum_visits(intervals: List[Interval]) -> int:
     # TODO - you fill in here.
-    return 0
+    intervals.sort(key=operator.attrgetter('right'))
+    last_time_visit, num_visits = float('-inf'), 0
+    for i in intervals:
+        if i.left > last_time_visit:
+            last_time_visit = i.right
+            num_visits += 1
+    return num_visits
 
 
 @enable_executor_hook
