@@ -7,6 +7,8 @@ from test_framework import generic_test
 def generate_first_k_a_b_sqrt2(k: int) -> List[float]:
     # TODO - you fill in here.
     curr_num = Number()
+
+    
     return []
 
 
