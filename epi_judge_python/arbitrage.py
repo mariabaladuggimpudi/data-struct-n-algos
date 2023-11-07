@@ -5,6 +5,9 @@ from test_framework import generic_test
 
 def is_arbitrage_exist(graph: List[List[float]]) -> bool:
     # TODO - you fill in here.
+
+
+    
     return True
 
 
