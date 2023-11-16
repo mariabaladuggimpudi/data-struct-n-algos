@@ -9,7 +9,7 @@ def generate_first_k_a_b_sqrt2(k: int) -> List[float]:
     curr_num = Number()
 
 
-    
+
     return []
 
 
