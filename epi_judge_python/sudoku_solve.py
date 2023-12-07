@@ -10,7 +10,28 @@ from test_framework.test_utils import enable_executor_hook
 
 def solve_sudoku(partial_assignment: List[List[int]]) -> bool:
     # TODO - you fill in here.
-    return True
+
+    def solve_sudoku_helper(i, j):
+        if i == len(partial_assignment):
+            i = 0
+            j += 1
+            if j == len(partial_assignment[i]):
+                return True
+
+        if partial_assignment[i][j] != empty_entry:
+            solve_sudoku_helper(i+1, j)
+        def valid_add(i, j, val):
+            if val not in (partial_assignment[i]):
+                return True
+            else:
+                return False
+
+
+
+
+        return False
+    empty_entry = 0
+    return solve_sudoku_helper(0, 0)
 
 
 def assert_unique_seq(seq):

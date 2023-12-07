@@ -5,6 +5,20 @@ from test_framework import generic_test
 
 def get_valid_ip_address(s: str) -> List[str]:
     # TODO - you fill in here.
+    result, temp_result = [], []
+    for i in range(len(s)):
+        if int(s[:i+1]) < 256:
+            temp_result.append(s[:i+1])
+        else:
+            break
+        for j in range(i+1,len(s)):
+            if int(s[i+1:j+1]) < 256:
+                temp_result.append(s[i+1:j+1])
+            else:
+                break
+            # for k in range(j+1, len(s)):
+            #     if int()
+
     return []
 
 

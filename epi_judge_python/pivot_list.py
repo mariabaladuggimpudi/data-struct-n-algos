@@ -9,7 +9,31 @@ from test_framework.test_utils import enable_executor_hook
 
 def list_pivoting(l: ListNode, x: int) -> Optional[ListNode]:
     # TODO - you fill in here.
-    return None
+
+    less_head = less_traverse = ListNode()
+    equal_head = equal_traverse = ListNode()
+    greater_head = greater_traverse = ListNode()
+    while l:
+        if l.data < x:
+            less_traverse.next = l
+            less_traverse = less_traverse.next
+            l = l.next
+        elif l.data == x:
+            equal_traverse.next = l
+            equal_traverse = equal_traverse.next
+            l = l.next
+        else:
+            greater_traverse.next = l
+            greater_traverse = greater_traverse.next
+            l = l.next
+
+    greater_traverse.next = None
+    equal_traverse.next = greater_head.next
+    less_traverse.next = equal_head.next
+
+
+
+    return less_head.next
 
 
 def linked_to_list(l):

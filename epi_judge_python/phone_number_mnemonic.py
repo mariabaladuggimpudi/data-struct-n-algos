@@ -2,26 +2,23 @@ from typing import List
 
 from test_framework import generic_test, test_utils
 
-MAPPING = ('0', '1', 'ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ')
+mapping = ('0', '1', 'ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ')
 def phone_mnemonic(phone_number: str) -> List[str]:
     # TODO - you fill in here.
     def phone_mnemonic_helper(digit):
-        if len(phone_number) == digit:
-            mnemonics.append(''.join(partial_mnemonics))
+        if digit == len(phone_number):
+            result.append(''.join(partial_mnemonic))
         else:
-            for letter in MAPPING[int(phone_number[digit])]:
-                partial_mnemonics[digit] = letter
-                phone_mnemonic_helper(digit + 1)
+            for c in mapping[int(phone_number[digit])]:
+                partial_mnemonic[digit] = c
+                phone_mnemonic_helper(digit+1)
 
 
 
-
-
-
-    mnemonics = []
-    partial_mnemonics = [0] * len(phone_number)
+    result = []
+    partial_mnemonic = ['0'] * len(phone_number)
     phone_mnemonic_helper(0)
-    return mnemonics
+    return result
 
 
 if __name__ == '__main__':

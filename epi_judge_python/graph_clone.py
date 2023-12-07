@@ -13,7 +13,27 @@ class GraphVertex:
 
 def clone_graph(graph: GraphVertex) -> GraphVertex:
     # TODO - you fill in here.
-    return GraphVertex(0)
+
+    if graph is None:
+        return None
+
+
+    q = collections.deque([graph])
+    vertex_map = {graph: GraphVertex(graph.label)}
+
+    while q:
+        curr = q.popleft()
+        for curr_vertex in curr.edges:
+            if curr_vertex not in vertex_map:
+                vertex_map[curr_vertex] = GraphVertex(curr_vertex.label)
+                vertex_map[curr].edges.append(vertex_map[curr_vertex])
+                q.append(curr_vertex)
+            else:
+                # vertex_map[curr_vertex] = GraphVertex(curr_vertex.label)
+                vertex_map[curr].edges.append(vertex_map[curr_vertex])
+                #q.append(vertex_map[curr_vertex])
+
+    return vertex_map[graph]
 
 
 def copy_labels(edges):
