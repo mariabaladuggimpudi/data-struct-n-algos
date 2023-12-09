@@ -8,23 +8,21 @@ def n_queens(n: int) -> List[List[int]]:
 
     def n_queens_helper(row):
         if row == n:
-            result.append(n_queens_placements.copy())
-            return
+            result.append(col_placement.copy())
+        else:
+            for col in range(n):
+                if all(abs(c - col) not in (0, row-i) for i, c in enumerate(col_placement[:row])):
+                    col_placement[row] = col
+                    n_queens_helper(row+1)
 
-        for col in range(n):
-            if all(
-                abs(c - col) not in (0, row - i)
-                for i, c in enumerate(n_queens_placements[:row])):
-                n_queens_placements[row] = col
-                n_queens_helper(row+1)
-
+        return
 
 
-    result: List[List[int]] = []
-    n_queens_placements = [0] * n
+
+    result = []
+    col_placement = [0] * n
     n_queens_helper(0)
     return result
-
 
 def comp(a, b):
     return sorted(a) == sorted(b)
