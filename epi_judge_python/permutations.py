@@ -14,6 +14,7 @@ def permutations(A: List[int]) -> List[List[int]]:
             permutations_helper(i+1)
             A[i], A[j] = A[j], A[i]
 
+
     result = []
     permutations_helper(0)
     return result
