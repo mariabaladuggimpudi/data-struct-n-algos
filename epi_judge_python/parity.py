@@ -4,11 +4,11 @@ from test_framework import generic_test
 def parity(x: int) -> int:
     # TODO - you fill in here.
     result = 0
-    if x > 0:
-        while x:
-            result ^= 1
-            x &= x-1
-    return result
+    while x:
+        result += x & 1
+        x >>= 1
+
+    return 1 if (result % 2) == 1 else 0
 
 
 if __name__ == '__main__':
